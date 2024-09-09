@@ -41,12 +41,13 @@ jobs:
 
       - name: Build
         run: |
+          ls
           gomobile init
           go mod tidy
           gomobile bind -v -androidapi 21 -ldflags='-s -w' ./
-      - name: Upload AndroidLibXrayLite to release
+      - name: Upload repo to release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: ./libv2ray*r
+          file: ./key*r
           tag: ${{ github.event.inputs.release_tag }}
           file_glob: true
